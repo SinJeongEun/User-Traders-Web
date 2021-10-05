@@ -21,7 +21,7 @@ export default {
 		categoryAll: { task: 'get', url: '/categories/list/board' },
 	},
 	like: {
-		register: { task: 'post', url: '/boards/likes/register' },
+		register: { task: 'post', url: '/boards/like' },
 	},
 	cart: {
 		register: { task: 'post', url: '/carts/register' },

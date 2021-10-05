@@ -27,7 +27,7 @@
 
 				<div v-if="jwt">
 					<v-btn class="mr-1" icon :to="{ name: 'Cart' }" align-center>
-						<v-icon size="xx-large" color="white">mdi-cart</v-icon>
+						<v-icon size="xx-large" color="white">mdi-heart</v-icon>
 					</v-btn>
 				</div>
 

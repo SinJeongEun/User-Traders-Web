@@ -184,9 +184,20 @@
 														mdi-comment-text-multiple
 													</v-icon>
 													{{ item.commentCount }}
-													<v-icon color="red">
+													<!-- <v-btn class="mr-1"
+													style="boder:none; border-width:0px;">
+														<v-icon color="red"
+														style="border:solid; border-width:2px; border-color: red;" >
 														mdi-heart
-													</v-icon>
+														</v-icon>
+													</v-btn> -->
+
+													<!-- <v-btn class="mr-1" @click="heartPush(item.id)" @mouseover="mouseOnHeart()" :to="{ name: 'Cart' }" align-center>
+														<v-icon size="xx-large" color=gray>mdi-heart</v-icon>
+													</v-btn> -->
+													<v-btn class="mr-1" icon :to="{ name: 'Cart' }" @click="heartPush(item.id)" @mouseover="mouseOnHeart()" v-bind:class="{'gray': !clicked, 'pink': clicked}">
+														<v-icon size="xx-large" color="gray" align-center >mdi-heart</v-icon>
+													</v-btn>
 													{{ item.likeCount }}
 													<v-icon color="blue">
 														mdi-eye-outline
@@ -240,6 +251,10 @@ export default {
 			limit: 1,
 			listData: [],
 		};
+		
+	},
+	data:{
+		clicked: false
 	},
 	components: {
 		InfiniteLoading,
@@ -252,6 +267,7 @@ export default {
 			profileImg: (state) => state.auth.profileImg,
 			jwt: (state) => state.auth.jwt,
 		}),
+		
 	},
 
 	mounted() {
@@ -287,6 +303,13 @@ export default {
 		detailPush(id) {
 			this.$router.push({ name: 'BoardDetail', params: { id: id } });
 		},
+		heartPush(id) {
+			//하트 누르면 어떤 api 불러??????????????
+		},
+		mouseOnHeart() {
+			// this.heartColor = "pink";
+			// alert("올라감");
+		},
 		...mapActions({
 			_getList: 'users/getList',
 		}),
@@ -301,5 +324,11 @@ export default {
 	opacity: 0.5;
 	position: absolute;
 	width: 100%;
+}
+.gray {
+	color: gray;
+}
+.pink {
+	color: pink;
 }
 </style>
